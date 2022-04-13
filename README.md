@@ -1,2 +1,2 @@
-# poetry-tools
+# Poetry tools
 Extension for Poetry
