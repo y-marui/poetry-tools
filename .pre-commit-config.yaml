@@ -42,6 +42,6 @@ repos:
   - id: pydocstyle
 
 - repo: ../poetry-tools
-  rev: dev
+  rev: 582e5525aa9c458a37f64b20e9aa39f6bc850233
   hooks:
   - id: check-poetry-git-flow
