@@ -31,7 +31,7 @@ def _check_git_flow() -> int:
         if version_git_flow != version_poetry:
             print(
                 f"Git flow work on `{version_git_flow}` "
-                "but Poetry returns `{version_poetry}`")
+                f"but Poetry returns `{version_poetry}`")
             return 1
 
     return 0
