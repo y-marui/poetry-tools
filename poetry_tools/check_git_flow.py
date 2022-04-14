@@ -13,10 +13,6 @@ def _check_git_flow() -> int:
     If branch is `hotfix/.*` or `release/.*`,
     check version from branck and poetry match.
     """
-    print("Start check_git_flow")
-    ref_name = cmd_output('git', 'symbolic-ref', 'HEAD').strip()
-    print(f"You are on {ref_name}.")
-
     if is_on_branch(["main", "master"], []):
         res = subprocess.run(["poetry", "run", "pytest"])
         return res.returncode

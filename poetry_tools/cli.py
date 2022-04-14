@@ -36,14 +36,11 @@ def get_disp_name():
 
 @click.group(cls=DefaultGroup, default="install", default_if_no_args=True)
 def cli():
-    print("Start cli")
     pass
 
 
 @cli.command()
 def install():
-    print("Start install")
-
     repo_name = get_repo_name()
     disp_name = get_disp_name()
 
