@@ -6,15 +6,14 @@ from pre_commit_hooks.no_commit_to_branch import is_on_branch
 from pre_commit_hooks.util import cmd_output
 
 
-@click.command()
-def check_git_flow():
+def _check_git_flow() -> int:
     """Check compatibility with git-flow.
 
     If branch is `main` or `master`, run `pytest`.
     If branch is `hotfix/.*` or `release/.*`,
     check version from branck and poetry match.
     """
-    print("Start Check")
+    print("Start check_git_flow")
     ref_name = cmd_output('git', 'symbolic-ref', 'HEAD').strip()
     print(f"You are on {ref_name}.")
 
@@ -38,5 +37,10 @@ def check_git_flow():
     return 0
 
 
+@click.command()
+def check_git_flow():
+    raise SystemExit(_check_git_flow())
+
+
 if __name__ == '__main__':
-    raise SystemExit(check_git_flow())
+    check_git_flow()

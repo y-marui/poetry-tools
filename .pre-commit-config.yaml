@@ -36,12 +36,12 @@ repos:
   hooks:
   - id: flake8
 
-- repo: https://github.com/pycqa/pydocstyle
-  rev: 6.1.1
-  hooks:
-  - id: pydocstyle
+# - repo: https://github.com/pycqa/pydocstyle
+#   rev: 6.1.1
+#   hooks:
+#   - id: pydocstyle
 
 - repo: ../poetry-tools
-  rev: 582e5525aa9c458a37f64b20e9aa39f6bc850233
+  rev: e2257fcd5cac9bd338561f4cd2f0e7fd916a585b
   hooks:
   - id: check-poetry-git-flow
