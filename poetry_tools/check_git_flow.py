@@ -23,6 +23,8 @@ def _check_git_flow() -> int:
     reponame, version_poetry = ref_name.strip().split()
     reponame = reponame.replace("-", "_")
     version_package = cmd_output(
+        "poetry",
+        "run",
         "python",
         "-c",
         f"import {reponame}; print({reponame}.__version__)"
