@@ -1,5 +1,7 @@
+"""Test version."""
 from poetry_tools import __version__
 
 
 def test_version():
-    assert __version__ == '1.0.0'
+    """Test version."""
+    assert __version__ == '1.1.1'

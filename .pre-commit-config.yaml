@@ -40,3 +40,8 @@ repos:
   rev: 6.1.1
   hooks:
   - id: pydocstyle
+
+- repo: https://github.com/y-marui/poetry-tools
+  rev: 1.1.0
+  hooks:
+  - id: check-poetry-git-flow

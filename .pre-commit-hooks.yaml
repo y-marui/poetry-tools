@@ -1,6 +1,6 @@
 - id: check-poetry-git-flow
   name: "Check compatibility of Poetry and git-flow"
   entry: poetry-tools git_flow
-  language: python
+  language: system
   pass_filenames: false
   always_run: true
