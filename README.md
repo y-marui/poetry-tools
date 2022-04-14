@@ -25,7 +25,7 @@ Script of workflow to setup Poetry.
 Run `poetry-tools git_flow` whenever commit is made.
 ```yaml:.pre-commit-config.yaml
 - repo: https://github.com/y-marui/poetry-tools
-  rev: 1.1.0
+  rev: 1.1.1
   hooks:
   - id: check-poetry-git-flow
 ```
