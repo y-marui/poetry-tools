@@ -1,8 +1,12 @@
-from pathlib import Path
-import toml
 import subprocess
+from pathlib import Path
+
 import click
+import toml
 from click_default_group import DefaultGroup
+
+from .check_git_flow import check_git_flow as git_flow
+
 
 def get_repo_name():
     path = Path("pyproject.toml")
@@ -16,6 +20,7 @@ def get_repo_name():
 
     return repo_name
 
+
 def get_disp_name():
     path = Path("README.md")
     if not path.exists():
@@ -23,14 +28,16 @@ def get_disp_name():
 
     with path.open("r") as fp:
         data = fp.readline()
-        
+
         disp_name = data[2:].strip()
 
     return disp_name
 
+
 @click.group(cls=DefaultGroup, default="install", default_if_no_args=True)
 def cli():
     pass
+
 
 @cli.command()
 def install():
@@ -42,17 +49,17 @@ def install():
         return
 
     subprocess.run([
-        "poetry", 
+        "poetry",
         "install"
     ])
     subprocess.run([
         "poetry",
-        "add", 
-        "-D", 
+        "add",
+        "-D",
         "ipykernel"
     ])
 
-    pwd=Path(".").absolute()
+    pwd = Path(".").absolute()
 
     res = subprocess.run([
         "poetry",
@@ -68,12 +75,11 @@ def install():
         f"${{PYTHONPATH}}:{pwd}"
     ], capture_output=True)
 
-    print(res.stderr.decode())  
+    print(res.stderr.decode())
+
 
 @cli.command("list")
 def _list():
-    repo_name = get_repo_name()
-
     subprocess.run([
         "jupyter",
         "kernelspec",
@@ -81,11 +87,12 @@ def _list():
         "--json"
     ])
 
+
 @cli.command()
 def uninstall():
     path = Path(".venv")
     if not path.exists():
-        raise FileNotFoundError(f"Poetry is not installed.")
+        raise FileNotFoundError("Poetry is not installed.")
 
     repo_name = get_repo_name()
 
@@ -99,9 +106,12 @@ def uninstall():
     res = input("Uninstall poetry from `{repo_name}`? [y/n]:")
     if res.strip() != "y":
         return
-    
+
     subprocess.run([
         "rm",
         "-rf",
-        ".venv" 
+        ".venv"
     ])
+
+
+cli.add_command(git_flow, name="git_flow")
