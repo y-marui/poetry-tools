@@ -3,6 +3,7 @@ import toml
 import subprocess
 import click
 from click_default_group import DefaultGroup
+from .check_git_flow import check_git_flow as git_flow
 
 def get_repo_name():
     path = Path("pyproject.toml")
@@ -105,3 +106,5 @@ def uninstall():
         "-rf",
         ".venv" 
     ])
+
+cli.add_command(git_flow, name="git_flow")
