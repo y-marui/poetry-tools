@@ -1,1 +1,2 @@
-__version__ = '1.0.0'
+"""Poetry tools."""
+__version__ = '1.1.0'
