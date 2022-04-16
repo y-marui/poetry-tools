@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-tools"
-version = "1.1.1"
+version = "1.2.0"
 description = ""
 authors = ["Yukihiro <12211343+y-marui@users.noreply.github.com>"]
 license = "MIT"
@@ -11,6 +11,7 @@ toml = "^0.10.2"
 click = "^8.1.2"
 click-default-group = "^1.2.2"
 pre-commit-hooks = "^4.2.0"
+bump2version = "^1.0.1"
 
 [tool.poetry.dev-dependencies]
 ipykernel = "^6.13.0"
