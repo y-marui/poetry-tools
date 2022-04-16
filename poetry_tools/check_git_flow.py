@@ -94,7 +94,7 @@ def _check_version_branch() -> int:
             f"Git flow work on `{version_branch}` "
             f"but Poetry returns `{version_poetry}`"
         )
-        subprocess.run(["poetry", "version" f"{version_branch}"])
+        subprocess.run(["poetry", "version", f"{version_branch}"])
         return 1
     else:
         return 0
