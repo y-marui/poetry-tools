@@ -1,4 +1,8 @@
 # Change Log
+## 1.2.1
+* Enhance CLI
+    - `--hlep` page get color
+
 ## 1.2.0
 Update functions.
 * Enhance `install/uninstall` commands #1
