@@ -34,16 +34,13 @@ class Custum(DefaultGroup, HelpColorsGroup):
         options_custom_colors : str, optional
             `options_custom_colors`, by default None
         """
-        super(Custum, self).__init__(
-            *args,
-            default_if_no_args=default_if_no_args,
-            **kwargs)
-        super(HelpColorsGroup, self).__init__(
-            *args,
-            help_headers_color=help_headers_color,
-            help_options_color=help_options_color,
-            options_custom_colors=options_custom_colors,
-            **kwargs)
+        super(DefaultGroup, self).__init__(*args, **kwargs)
+        super(HelpColorsGroup, self).__init__(*args, **kwargs)
+
+        self.default_if_no_args = default_if_no_args
+        self.help_headers_color = help_headers_color
+        self.help_options_color = help_options_color
+        self.options_custom_colors = options_custom_colors
 
 
 def _get_repo_name():
