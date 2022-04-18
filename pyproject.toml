@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "poetry-tools"
-version = "1.2.0"
+version = "1.2.1"
 description = ""
 authors = ["Yukihiro <12211343+y-marui@users.noreply.github.com>"]
 license = "MIT"
