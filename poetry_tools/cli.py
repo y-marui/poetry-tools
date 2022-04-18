@@ -5,8 +5,45 @@ from pathlib import Path
 import click
 import toml
 from click_default_group import DefaultGroup
+from click_help_colors import HelpColorsGroup
 
 from .check_git_flow import check_git_flow as git_flow
+
+
+class Custum(DefaultGroup, HelpColorsGroup):
+    """Combination of `DefaultGroup` and `HelpColorsGroup`."""
+
+    def __init__(self,
+                 *args,
+                 default_if_no_args: bool = None,
+                 help_headers_color: str = None,
+                 help_options_color: str = None,
+                 options_custom_colors: str = None,
+                 **kwargs):
+        """Combine of `DefaultGroup` and `HelpColorsGroup`.
+
+        Parameters
+        ----------
+        default_if_no_args : bool, optional
+            resolves to the default command if no arguments passed.,
+            by default None
+        help_headers_color : str, optional
+            `help_headers_color`, by default None
+        help_options_color : str, optional
+            `help_options_color`, by default None
+        options_custom_colors : str, optional
+            `options_custom_colors`, by default None
+        """
+        super(Custum, self).__init__(
+            *args,
+            default_if_no_args=default_if_no_args,
+            **kwargs)
+        super(HelpColorsGroup, self).__init__(
+            *args,
+            help_headers_color=help_headers_color,
+            help_options_color=help_options_color,
+            options_custom_colors=options_custom_colors,
+            **kwargs)
 
 
 def _get_repo_name():
@@ -35,13 +72,16 @@ def _get_disp_name():
     return disp_name
 
 
-@click.group(cls=DefaultGroup, default="install", default_if_no_args=True)
+@click.group(cls=Custum,
+             default_if_no_args=True,
+             help_headers_color='yellow',
+             help_options_color='green')
 def cli():
     """Excute CLI."""
     pass
 
 
-@cli.command()
+@cli.command(default=True)
 def install():
     """Install Poetry."""
     repo_name = _get_repo_name()
